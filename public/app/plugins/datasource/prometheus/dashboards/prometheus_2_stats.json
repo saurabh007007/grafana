@@ -1335,7 +1335,23 @@
   "schemaVersion": 30,
   "tags": ["prometheus"],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "name": "job",
+        "type": "query",
+        "label": "Prometheus Job",
+        "datasource": "${DS_GDEV-PROMETHEUS}",
+        "refresh": 1,
+        "query": {
+          "query": "label_values(prometheus_build_info, job)",
+          "refId": "Prometheus-job"
+        },
+        "current": {
+          "text": "prometheus",
+          "value": "prometheus"
+        }
+      }
+    ]
   },
   "time": {
     "from": "now-1h",
